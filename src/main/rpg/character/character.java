@@ -11,7 +11,7 @@ public class Character {
 		this.name = name;
 		this.level = level;
 		this.exp = exp;
-		this.setDungeonLevel(dungeonLevel);
+		this.dungeonLevel = dungeonLevel;
 	}
 
 	@Override

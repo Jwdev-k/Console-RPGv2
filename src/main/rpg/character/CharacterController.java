@@ -2,6 +2,7 @@ package main.rpg.character;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -37,7 +38,7 @@ public class CharacterController {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public void loadCharacter(int accountid) throws IOException {
 		try {
 			Connection conn = DatabaseConfig.getConnection();
@@ -51,7 +52,32 @@ public class CharacterController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(info.toString() + "로드 완료.");
+		System.out.println(info.toString() + " 로드 완료.");
+		
+		return;
+	}
+	
+	public void saveCharacter(int accountid) throws IOException {
+		try {
+			Connection conn = DatabaseConfig.getConnection();
+			PreparedStatement ps = conn.prepareStatement("update characterInfo set name=?, level=?, exp=?, dungeonLevel=?  where AccountId=" + accountid);
+			ResultSet rs = ps.executeQuery("SELECT * from characterInfo");
+			while (rs.next()) {
+				if (accountid != rs.getInt("AccountId")) {
+					return;
+				}
+			}
+			ps.setString(1, info.getName()); 
+			ps.setInt(2, info.getLevel()); 
+			ps.setDouble(3, info.getExp());
+			ps.setInt(4, info.getDungeonLevel());
+			ps.executeUpdate();
+			
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println(info.toString() + " 저장 완료.");
 		return;
 	}
 }

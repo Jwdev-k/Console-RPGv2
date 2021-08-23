@@ -6,12 +6,15 @@ import java.util.Scanner;
 import main.rpg.character.CharacterController;
 
 public class RPG {
+	
+	private int accountid;
 
 	private static Scanner sc = new Scanner(System.in);
 	private static CharacterController cc = new CharacterController();
 
 	public RPG(int accountid) throws IOException {
 		super();
+		this.accountid = accountid;
 		var sb = new StringBuilder();
 		sb.append("*******************************************\n");
 		sb.append("Console RPGv2에 오신걸 환영합니다.");
@@ -25,7 +28,7 @@ public class RPG {
 	private void inGameMenu() {
 		while (true) {
 			System.out.println("원햐시는 메뉴를 선택해 주세요.");
-			System.out.println("1.던전입장, 2.상점, 3.게임종료");
+			System.out.println("1.던전입장, 2.상점, 3.게임종료 4.저장");
 			var select = sc.nextInt();
 			if (select == 1) {
 				enterDungeon();
@@ -36,6 +39,18 @@ public class RPG {
 			if (select == 3) {
 				System.exit(0);
 			}
+			if (select == 4) {
+				cc.info.setLevel(2);
+				save();
+			}
+		}
+	}
+
+	private void save() {
+		try {
+			cc.saveCharacter(accountid);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -43,9 +58,9 @@ public class RPG {
 		System.out.println("시작");
 
 	}
-	
+
 	private void shop() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("아이템 목록");
+
 	}
 }
