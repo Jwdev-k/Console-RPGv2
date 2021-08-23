@@ -63,7 +63,7 @@ public class LoginSystem {
 	private static void getPassword() {
 		try {
 			Statement stat = dbConnect().createStatement();
-			ResultSet rs = stat.executeQuery("SELECT * from Account");
+			ResultSet rs = stat.executeQuery("SELECT * from account");
 			System.out.println("비밀번호를 찾으실 계정 ID를 입력해 주세요.");
 			String id = sc.next();
 			while (rs.next()) {
@@ -84,7 +84,7 @@ public class LoginSystem {
 	private static void registerAccount() {
 		try {
 			Statement stat = dbConnect().createStatement();
-			ResultSet rs = stat.executeQuery("SELECT * from Account");
+			ResultSet rs = stat.executeQuery("SELECT * from account");
 			System.out.println("사용할 ID를 입력해주세요");
 			String id = sc.next();
 			while (rs.next()) {
@@ -95,7 +95,7 @@ public class LoginSystem {
 			}
 			System.out.println("사용할 패스워드를 입력해주세요");
 			String password = sc.next();
-			stat.executeUpdate("insert into Account values('" + id + "','" + password + "')");
+			stat.executeUpdate("insert into Account values('"+ 0 + "','" + id + "','" + password + "')");
 		} catch (SQLException e) {
 			System.out.println("데이터베이스를 찾을수 없습니다.");
 			e.printStackTrace();
@@ -111,7 +111,7 @@ public class LoginSystem {
 		int accountId = 0;
 		try {
 			Statement stat = dbConnect().createStatement();
-			ResultSet rs2 = stat.executeQuery("SELECT * from Account");
+			ResultSet rs2 = stat.executeQuery("SELECT * from account");
 			while (rs2.next()) {
 				if (!rs2.getString("id").equals(id)) {
 					System.out.println("아이디를 찾을수 없습니다.");
