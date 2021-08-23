@@ -1,20 +1,22 @@
 package main.rpg.character;
 
-public class character {
+public class Character {
 	private String name;
 	private int level;
 	private double exp;
+	private int dungeonLevel;
 
-	public character(String name, int level, double exp) {
+	public Character(String name, int level, double exp, int dungeonLevel) {
 		super();
 		this.name = name;
 		this.level = level;
 		this.exp = exp;
+		this.setDungeonLevel(dungeonLevel);
 	}
 
 	@Override
 	public String toString() {
-		return "character [name=" + name + ", level=" + level + ", exp=" + exp + "]";
+		return "캐릭터 정보 [이름= " + name + ", 레벨= " + level + ", 경험치= " + exp + "]";
 	}
 
 	public String getName() {
@@ -39,5 +41,13 @@ public class character {
 
 	public void setExp(double exp) {
 		this.exp = exp;
+	}
+
+	public int getDungeonLevel() {
+		return dungeonLevel;
+	}
+
+	public void setDungeonLevel(int dungeonLevel) {
+		this.dungeonLevel = dungeonLevel;
 	}
 }

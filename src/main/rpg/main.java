@@ -6,14 +6,18 @@ import java.util.Scanner;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("all")
 public class main {
-	
+
 	private static Log log = LogFactory.getLog(main.class);
 	private static Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		log.warn("start console Test");
-		new LoginSystem();
+		try {
+			new LoginSystem();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
