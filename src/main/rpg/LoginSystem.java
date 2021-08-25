@@ -111,7 +111,7 @@ public class LoginSystem {
 		int accountId = 0;
 		try {
 			Statement stat = dbConnect().createStatement();
-			ResultSet rs2 = stat.executeQuery("SELECT * from account");
+			ResultSet rs2 = stat.executeQuery("SELECT * from Account");
 			while (rs2.next()) {
 				if (!rs2.getString("id").equals(id)) {
 					System.out.println("아이디를 찾을수 없습니다.");
@@ -131,7 +131,6 @@ public class LoginSystem {
 		check = false;
 		System.out.println("*로그인 성공*");
 		new RPG(accountId);
-		return;
 	}
 
 }

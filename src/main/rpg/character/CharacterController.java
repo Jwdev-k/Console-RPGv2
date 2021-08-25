@@ -31,7 +31,7 @@ public class CharacterController {
 			System.out.println("캐릭터 정보를 불러올수 없습니다. 캐릭터를 생성해주세요.");
 			System.out.print("캐릭터 이름을 입력해주세요 : ");
 			String name = sc.next();	
-			stat.executeUpdate("insert into characterInfo values(" + accountid + ",'" + name + "'," + 1 + "," + 0 + ")");
+			stat.executeUpdate("insert into characterInfo values(" + accountid + ",'" + name + "'," + 1 + "," + 0 + "," + 1 + ")");
 			System.out.println("캐릭터 생성완료.");
 			loadCharacter(accountid);
 		} catch (SQLException e) {
