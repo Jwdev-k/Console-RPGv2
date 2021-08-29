@@ -1,5 +1,7 @@
 package main.rpg.monster;
 
+import java.util.Objects;
+
 public class monster {
 	private String name;
 	private int level;
@@ -22,44 +24,9 @@ public class monster {
 				+ "]";
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getHp() {
-		return hp;
-	}
-
-	public void setHp(int hp) {
-		this.hp = hp;
-	}
-
-	public int getMp() {
-		return mp;
-	}
-
-	public void setMp(int mp) {
-		this.mp = mp;
-	}
-
-	public double getDropexp() {
-		return dropexp;
-	}
-
-	public void setDropexp(double dropexp) {
-		this.dropexp = dropexp;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
 	}
 
 }
