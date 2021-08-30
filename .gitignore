@@ -31,10 +31,11 @@ tomcat
 # Maven 
 target/
 
-# eclipse project file
+# eclipse & IDEA project file
 .settings/
 .classpath
 .project
+.idea
 
 # OS
 .DS_Store

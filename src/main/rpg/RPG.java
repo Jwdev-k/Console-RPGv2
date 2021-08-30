@@ -4,15 +4,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import main.rpg.character.CharacterController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 
 public class RPG {
 	
 	private int accountid;
 
-	private static Logger log = LoggerFactory.getLogger(RPG.class);
 	private static Scanner sc = new Scanner(System.in);
 	private static CharacterController cc = new CharacterController();
 
@@ -24,15 +20,15 @@ public class RPG {
 		sb.append("Console RPGv2에 오신걸 환영합니다.");
 		sb.append("\n해당 프로그램은 콘솔에 입력한 명령어로만 작동되는 게임 입니다.");
 		sb.append("\n*******************************************");
-		log.info(sb.toString());
+		System.out.println(sb.toString());
 		cc.checkCharacter(accountid);
 		inGameMenu();
 	}
 
 	private void inGameMenu() {
 		while (true) {
-			log.info("원햐시는 메뉴를 선택해 주세요.");
-			log.info("1.던전입장, 2.상점, 3.게임종료 4.저장");
+			System.out.println("원햐시는 메뉴를 선택해 주세요.");
+			System.out.println("1.던전입장, 2.상점, 3.게임종료 4.저장");
 			var select = sc.nextInt();
 			if (select == 1) {
 				enterDungeon();
@@ -59,12 +55,12 @@ public class RPG {
 	}
 
 	private void enterDungeon() {
-		log.info("시작");
+		System.out.println("시작");
 
 	}
 
 	private void shop() {
-		log.info("아이템 목록");
+		System.out.println("아이템 목록");
 
 	}
 }
