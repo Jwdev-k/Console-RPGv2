@@ -1,9 +1,13 @@
 package main.rpg;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
+import main.rpg.character.Character;
 import main.rpg.character.CharacterController;
+import main.rpg.monster.monster;
 
 public class RPG {
 	
@@ -25,7 +29,7 @@ public class RPG {
 		inGameMenu();
 	}
 
-	private void inGameMenu() {
+	private void inGameMenu() throws IOException {
 		while (true) {
 			System.out.println("원햐시는 메뉴를 선택해 주세요.");
 			System.out.println("1.던전입장, 2.상점, 3.게임종료 4.저장");
@@ -46,21 +50,45 @@ public class RPG {
 		}
 	}
 
-	private void save() {
-		try {
-			cc.saveCharacter(accountid);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	private void save() throws IOException {
+		cc.saveCharacter(accountid);
 	}
 
-	private void enterDungeon() {
-		System.out.println("시작");
-
+	private void enterDungeon() throws IOException {
+		switch (cc.checkDungeonLevel(accountid)) {
+			case 1:
+				var mob = new monster("슬라임",  1, 5, 0, 10);
+				System.out.println(mob.getName() + " 이/가 등장 했다!");
+				while (mob.getHp() > 0) {
+					System.out.println("1.공격");
+					int select = sc.nextInt();
+					if (select == 1) {
+						var damage = (int) (Math.random() * 10);
+						System.out.println(mob.getName() + "에게 공격을 했다.!");
+						System.out.println(damage + "데미지를 받았다.");
+						mob.setHp(damage);
+						if (mob.getHp() != 0) {
+							System.out.println(mob.getName() + "의 HP가" + mob.getHp() + "이 되었다.");
+						} else {
+							System.out.println(mob.getName() + "이/가 죽었다.");
+							System.out.println("경험치가" + mob.getDropexp() + "만큼 올랐다!");
+							cc.info.setExp(mob.getDropexp());
+						}
+					}
+				}
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+		}
 	}
 
 	private void shop() {
 		System.out.println("아이템 목록");
-
 	}
 }

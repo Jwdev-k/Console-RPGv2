@@ -68,7 +68,7 @@ public class LoginSystem {
 			String id = sc.next();
 			while (rs.next()) {
 				if (rs.getString("id").equals(id)) {
-					System.out.println("해당 ID의 비밀번호는 " + rs.getString("password").toString() + "입니다.");
+					System.out.println("해당 ID의 비밀번호는 " + rs.getString("password") + "입니다.");
 					return;
 				} else {
 					System.out.println("존재 하지 않는 계정입니다.");
