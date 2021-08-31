@@ -1,15 +1,16 @@
 package main.rpg.character;
 
 public class Character {
-
+	private int AccountId;
 	private String name;
 	private int level;
 	private double exp;
 	private int dungeonLevel;
 
 
-	public Character(String name, int level, double exp, int dungeonLevel) {
+	public Character(int Accountid, String name, int level, double exp, int dungeonLevel) {
 		super();
+		this.AccountId = Accountid;
 		this.name = name;
 		this.level = level;
 		this.exp = exp;
@@ -19,6 +20,10 @@ public class Character {
 	@Override
 	public String toString() {
 		return "캐릭터 정보 [이름= " + name + ", 레벨= " + level + ", 경험치= " + exp + "]";
+	}
+
+	public int getAccountId() {
+		return AccountId;
 	}
 
 	public String getName() {
