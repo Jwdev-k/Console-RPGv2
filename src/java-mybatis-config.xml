@@ -14,10 +14,10 @@
     </settings>
 
     <!-- Configure domain objects -->
-    <typeAliases>
-        <typeAlias alias="Character"
-                   type="main.rpg.character" />
-    </typeAliases>
+<!--    <typeAliases>-->
+<!--        <typeAlias alias="Character"-->
+<!--                   type="main.rpg.character" />-->
+<!--    </typeAliases>-->
     <!-- Configure the datasource -->
     <environments default="development">
         <environment id="development">

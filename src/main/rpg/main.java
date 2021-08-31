@@ -14,6 +14,8 @@ public class main {
 			new LoginSystem();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 }

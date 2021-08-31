@@ -12,7 +12,7 @@ public class LoginSystem {
 	private static Scanner sc = new Scanner(System.in);
 	private static boolean check = true;
 
-	public LoginSystem() throws IOException {
+	public LoginSystem() throws IOException, InterruptedException {
 		super();
 		// TODO Auto-generated constructor stub
 		if (dbConnect() != null) {
@@ -37,7 +37,7 @@ public class LoginSystem {
 		return null;
 	}
 
-	public static void menu() throws IOException {
+	public static void menu() throws IOException, InterruptedException {
 		while (check) {
 			var sb = new StringBuilder();
 			sb.append("*******************************************\n");
@@ -103,7 +103,7 @@ public class LoginSystem {
 		System.out.println("회원가입 성공");
 	}
 
-	private static void login() throws IOException {
+	private static void login() throws IOException, InterruptedException {
 		System.out.println("ID를 입력해주세요");
 		String id = sc.next();
 		System.out.println("Password를 입력해주세요");

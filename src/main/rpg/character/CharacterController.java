@@ -59,7 +59,7 @@ public class CharacterController{
 			ResultSet rs = stat.executeQuery("SELECT * from characterInfo");
 			while (rs.next()) {
 				if (accountid == rs.getInt("AccountId")) {
-					info = new Character(rs.getString("name"), rs.getInt("level"), rs.getDouble("exp"), rs.getInt("dungeonLevel"));
+					info = new Character(rs.getInt("AccountId"), rs.getString("name"), rs.getInt("level"), rs.getDouble("exp"), rs.getInt("dungeonLevel"));
 				}
 			}
 		} catch (SQLException e) {
@@ -108,6 +108,12 @@ public class CharacterController{
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	public Character getCharacterData() throws Exception {
+		CMapper mapper = getSqlSession().getMapper(CMapper.class);
+		Character c = mapper.getCharacterData();
+		return new Character(c.getAccountId(), c.getName(), c.getLevel(), c.getExp(), c.getDungeonLevel());
 	}
 
 }
