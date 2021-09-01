@@ -15,7 +15,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class CharacterController{
+public class CharacterController implements CMapper{
 
 	public Character info;
 	
@@ -110,6 +110,7 @@ public class CharacterController{
 		return 0;
 	}
 
+	@Override
 	public Character getCharacterData() throws Exception {
 		CMapper mapper = getSqlSession().getMapper(CMapper.class);
 		Character c = mapper.getCharacterData();

@@ -4,6 +4,6 @@ import org.apache.ibatis.annotations.*;
 
 public interface CMapper {
     @Select("SELECT * from characterinfo")
-    Character getCharacterData();
+    Character getCharacterData() throws Exception;
 
 }
